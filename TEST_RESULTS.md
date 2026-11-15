@@ -1,4 +1,9 @@
-# TEST RESULTS — photo-editor-bd (run #345, 2026-11-15 16:00 slot)
+# TEST RESULTS — photo-editor-bd (run #346, 2026-11-15 16:00 slot)
+
+> Numbering note: this run was built as #345, but the concurrent 15:00 run
+> (coxs-bazar-bd) recorded #345 in the ledger first, so this run takes #346
+> per the factory re-read rule. The initial commit message still says
+> "(run #345)" — that text is frozen in git history and is corrected here.
 
 ## Unit tests (Node built-in runner)
 Command: `node --test tests/core.test.mjs`
