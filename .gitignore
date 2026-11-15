@@ -1,0 +1,11 @@
+# Dependencies / local tooling
+node_modules/
+
+# OS / editor artefacts
+.DS_Store
+Thumbs.db
+*.log
+
+# Local test artefacts (screenshots, chrome profiles)
+*.png
+!docs/*.png

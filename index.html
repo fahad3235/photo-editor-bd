@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Editor BD — Edit photos offline, free</title>
+<meta name="description" content="Free offline photo editor for Bangladesh. Adjust brightness, contrast, colour, apply looks, rotate and flip, then download — no upload, no account, no watermark.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">🖼️</span>
+    <div>
+      <h1 data-i18n="title">Photo Editor BD</h1>
+      <p class="subtitle" data-i18n="subtitle">Edit photos right in your browser — no upload, no account, no watermark.</p>
+    </div>
+  </div>
+  <button id="langToggle" class="lang-btn" type="button">বাংলা</button>
+</header>
+
+<main class="wrap">
+  <!-- Upload / empty state -->
+  <section id="uploadSection" class="card upload-card" aria-label="Choose a photo">
+    <h2 data-i18n="uploadTitle">Choose a photo to edit</h2>
+    <p class="hint" data-i18n="uploadHint">JPG, PNG, WebP or GIF · up to 20 MB · your photo never leaves this device</p>
+    <div id="dropZone" class="dropzone" tabindex="0" role="button" aria-label="Choose a photo">
+      <span class="drop-icon" aria-hidden="true">📷</span>
+      <p class="drop-text" data-i18n="dropHere">Drop your photo here</p>
+      <p class="drop-or">— <span data-i18n="or">or</span> —</p>
+      <div class="upload-actions">
+        <button id="chooseBtn" class="btn primary" type="button" data-i18n="chooseFile">Choose a photo</button>
+        <button id="sampleBtn" class="btn ghost" type="button" data-i18n="trySample">Try a sample photo</button>
+      </div>
+      <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+    </div>
+    <p id="errorBox" class="error" role="alert" hidden></p>
+  </section>
+
+  <!-- Editor -->
+  <section id="editorSection" class="editor" hidden>
+    <div class="card preview-card">
+      <div class="preview-head">
+        <span id="photoInfo" class="photo-info"></span>
+        <span id="stateBadge" class="badge">Edited</span>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="canvas" width="800" height="600"></canvas>
+      </div>
+      <p class="compare-hint"><span data-i18n="compare">Hold to see original</span></p>
+      <div class="preview-actions">
+        <button id="compareBtn" class="btn ghost" type="button">👁 <span data-i18n="original">Original</span></button>
+        <button id="resetBtn" class="btn ghost" type="button">↺ <span data-i18n="reset">Reset all</span></button>
+        <button id="changeBtn" class="btn ghost" type="button">↩ <span data-i18n="changePhoto">Choose a different photo</span></button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="card">
+        <h2 data-i18n="presets">Looks</h2>
+        <div id="presetRow" class="preset-row" role="group" aria-label="Looks"></div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="adjustments">Adjustments</h2>
+        <div id="sliderList" class="slider-list"></div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="transform">Rotate &amp; flip</h2>
+        <div class="transform-row">
+          <button id="rotLeft" class="btn" type="button">⟲ <span data-i18n="rotateLeft">Rotate left</span></button>
+          <button id="rotRight" class="btn" type="button">⟳ <span data-i18n="rotateRight">Rotate right</span></button>
+          <button id="flipHBtn" class="btn" type="button">⇄ <span data-i18n="flipH">Flip sideways</span></button>
+          <button id="flipVBtn" class="btn" type="button">⇅ <span data-i18n="flipV">Flip up-down</span></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="exportTitle">Save your photo</h2>
+        <label class="field">
+          <span data-i18n="format">Format</span>
+          <select id="formatSelect">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+          </select>
+        </label>
+        <label class="field" id="qualityField" hidden>
+          <span><span data-i18n="quality">JPEG quality</span> — <output id="qualityVal">90</output></span>
+          <input id="qualitySlider" type="range" min="10" max="100" step="5" value="90">
+        </label>
+        <label class="field">
+          <span data-i18n="filename">File name</span>
+          <input id="fileNameInput" type="text" value="my-photo" maxlength="60">
+        </label>
+        <button id="downloadBtn" class="btn primary big" type="button">⬇ <span data-i18n="download">Download edited photo</span></button>
+        <p class="hint small" data-i18n="privacy">100% private — everything runs on your device. Nothing is uploaded anywhere.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p data-i18n="footer">Photo Editor BD · works offline · made for Bangladesh</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
